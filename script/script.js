@@ -4,6 +4,7 @@ const faqItems = document.querySelector('.faq__items')
 const burger = document.querySelector('.header-burger')
 const burgerClose = document.querySelector('.header-burger_close')
 const mobMenu = document.querySelector('.header-mob')
+const mobMenuLinks = document.querySelector('.header-nav__list_mob')
 
 
 faqItems.addEventListener('click', (e) => {
@@ -17,14 +18,23 @@ faqItems.addEventListener('click', (e) => {
     }
 })
 
+const removeMobMenu = () => {
+    mobMenu.classList.remove('header-mob_active')
+    document.body.style.overflow = 'auto'
+}
+
 burger.addEventListener('click', () => {
     mobMenu.classList.add('header-mob_active')
     document.body.style.overflow = 'hidden'
 })
 
-burgerClose.addEventListener('click', () => {
-    mobMenu.classList.remove('header-mob_active')
-    document.body.style.overflow = 'auto'
+burgerClose.addEventListener('click', removeMobMenu)
+
+mobMenuLinks.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (e.target.closest('.header-nav__list_mob .header-nav__link')) {
+        removeMobMenu()
+    }
 })
 
 $(document).ready(function(){
@@ -72,3 +82,29 @@ $(document).ready(function(){
     initVideo();
 });
 
+
+const movieToSection = (element) => {
+    const menuLinks = document.querySelector(`.${element}`)
+    const howWorks = document.getElementById('h-works')
+    const pricing = document.getElementById('pricing')
+    const solutions = document.getElementById('solutions')
+    const faq = document.getElementById('faq')
+
+    menuLinks.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (e.target.closest('.how-works')) {
+            console.log('gg')
+            howWorks.scrollIntoView({behavior: 'smooth'})
+        } else if (e.target.closest('.Pricing')) {
+            pricing.scrollIntoView({behavior: 'smooth'})
+        } else if (e.target.closest('.solutions')) {
+            solutions.scrollIntoView({behavior: 'smooth'})
+        } else if (e.target.closest('.FAQ')) {
+            faq.scrollIntoView({behavior: 'smooth'})
+        }
+    })
+}
+
+
+movieToSection('header-nav__list')
+movieToSection('header-nav__list_mob')
