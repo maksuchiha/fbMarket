@@ -82,6 +82,7 @@ $(document).ready(function(){
     initVideo();
 });
 
+window.__forceSmoothScrollPolyfill__ = true;
 
 const movieToSection = (element) => {
     const menuLinks = document.querySelector(`.${element}`)
