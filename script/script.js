@@ -82,7 +82,6 @@ $(document).ready(function(){
     initVideo();
 });
 
-window.__forceSmoothScrollPolyfill__ = true;
 
 const movieToSection = (element) => {
     const menuLinks = document.querySelector(`.${element}`)
@@ -94,18 +93,16 @@ const movieToSection = (element) => {
     menuLinks.addEventListener('click', (e) => {
         e.preventDefault()
         if (e.target.closest('.how-works')) {
-            console.log('gg')
-            howWorks.scrollIntoView({behavior: 'smooth'})
+            $('body,html').animate({scrollTop: howWorks.offsetTop - 50}, 500)
         } else if (e.target.closest('.Pricing')) {
-            pricing.scrollIntoView({behavior: 'smooth'})
+            $('body,html').animate({scrollTop: pricing.offsetTop}, 500)
         } else if (e.target.closest('.solutions')) {
-            solutions.scrollIntoView({behavior: 'smooth'})
+            $('body,html').animate({scrollTop: solutions.offsetTop - 200}, 500)
         } else if (e.target.closest('.FAQ')) {
-            faq.scrollIntoView({behavior: 'smooth'})
+            $('body,html').animate({scrollTop: faq.offsetTop}, 500)
         }
     })
 }
-
 
 movieToSection('header-nav__list')
 movieToSection('header-nav__list_mob')
