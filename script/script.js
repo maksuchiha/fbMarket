@@ -8,6 +8,7 @@ const mobMenuLinks = document.querySelector('.header-nav__list_mob')
 const marketplaceCounts = document.querySelectorAll('.marketplace-stat__count')
 const worksVideo = $('.h-works-info__slide video')
 const worksItem = $('.h-works-info__head')
+let currentSlide = 0
 
 faqItems.addEventListener('click', (e) => {
     if (e.target.closest('.faq__title')) {
@@ -76,6 +77,27 @@ $(document).ready(function(){
             worksVideo.attr('src', srcVideo);
         }
     })
+
+    const nextSlide = () => {
+        const infoList = document.querySelectorAll('.h-works-info__head')
+
+        $(".h-works-info__slide video").bind("ended", function() {
+            infoList[currentSlide].classList.toggle('active')
+            currentSlide++
+
+            if (currentSlide >= infoList.length) {
+                currentSlide = 0
+            }
+
+            infoList[currentSlide].classList.toggle('active')
+            worksVideo.attr('src', `${infoList[currentSlide].getAttribute('data-src-video')}`);
+        });
+
+
+
+
+    }
+    nextSlide()
 
     function initVideo() {
         const activeWorksItem = $('.h-works-info__head.active');
