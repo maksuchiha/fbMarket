@@ -56,28 +56,6 @@ $(document).ready(function(){
         });
     }
 
-    $('.h-works-info__list').click((event) => {
-        const target = event.target;
-
-        let indexClick;
-        let srcVideo;
-
-        if(target.closest('.h-works-info__head') && !$(target.closest('.h-works-info__head')).hasClass('active')) {
-            const activeWorksItem = $('.h-works-info__head.active');
-
-            worksItem.each((index, item) => {
-                if(item == target.closest('.h-works-info__head')) {
-                    indexClick = index;
-                    srcVideo = $(item).data('src-video');
-                    activeWorksItem.toggleClass('active');
-                    $(item).toggleClass('active')
-                }
-            })
-
-            worksVideo.attr('src', srcVideo);
-        }
-    })
-
     const nextSlide = () => {
         const infoList = document.querySelectorAll('.h-works-info__head')
 
