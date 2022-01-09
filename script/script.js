@@ -11,38 +11,6 @@ const worksItem = $('.h-works-info__head')
 let currentSlide = 0
 
 
-faqItems.addEventListener('click', (e) => {
-    if (e.target.closest('.faq__title')) {
-        e.target.closest('.faq__item')
-            .querySelector('.faq__text')
-            .classList.toggle('faq__text_active')
-        e.target.closest('.faq__item')
-            .querySelector('.faq__plus')
-            .classList.toggle('faq__plus_active')
-    }
-})
-
-const removeMobMenu = () => {
-    mobMenu.classList.remove('header-mob_active')
-    document.body.style.overflowY = 'auto'
-    document.querySelector('.html').style.overflowY = 'auto'
-}
-
-burger.addEventListener('click', () => {
-    mobMenu.classList.add('header-mob_active')
-    document.body.style.overflowY = 'hidden'
-    document.querySelector('.html').style.overflowY = 'hidden'
-})
-
-burgerClose.addEventListener('click', removeMobMenu)
-
-mobMenuLinks.addEventListener('click', (e) => {
-    e.preventDefault()
-    if (e.target.closest('.header-nav__list_mob .header-nav__link')) {
-        removeMobMenu()
-    }
-})
-
 $(document).ready(function(){
     if (window.screen.width > 606) {
         $('.supported-brands__wr').slick({
@@ -57,6 +25,30 @@ $(document).ready(function(){
         });
     }
 
+    $('.h-works-info__list').click((event) => {
+        const target = event.target;
+
+        let indexClick;
+        let srcVideo;
+
+        if(target.closest('.h-works-info__head') && !$(target.closest('.h-works-info__head')).hasClass('active')) {
+            const activeWorksItem = $('.h-works-info__head.active');
+
+            worksItem.each((index, item) => {
+
+                if(item == target.closest('.h-works-info__head')) {
+                    currentSlide = index;
+                    indexClick = index;
+                    srcVideo = $(item).data('src-video');
+                    activeWorksItem.toggleClass('active');
+                    $(item).toggleClass('active')
+                }
+            })
+
+            worksVideo.attr('src', srcVideo);
+        }
+    })
+
     const nextSlide = () => {
         const infoList = document.querySelectorAll('.h-works-info__head')
 
@@ -69,9 +61,11 @@ $(document).ready(function(){
             }
 
             infoList[currentSlide].classList.toggle('active')
+
             worksVideo.attr('src', `${infoList[currentSlide].getAttribute('data-src-video')}`);
         });
     }
+
     nextSlide()
 
     function initVideo() {
@@ -82,13 +76,18 @@ $(document).ready(function(){
     initVideo();
 });
 
+const removeMobMenu = () => {
+    mobMenu.classList.remove('header-mob_active')
+    document.body.style.overflowY = 'auto'
+    document.querySelector('.html').style.overflowY = 'auto'
+}
+
 const animates = () => {
     let isFalse = true
 
     const animate = ({timing, draw, duration}) => {
 
         let start = performance.now()
-
 
         requestAnimationFrame(function animate(time) {
             let timeFraction = (time - start) / duration
@@ -101,7 +100,6 @@ const animates = () => {
             if (timeFraction < 1) {
                 requestAnimationFrame(animate)
             }
-
         });
     }
 
@@ -152,6 +150,33 @@ const movieToSection = (element) => {
         }
     })
 }
+
+
+faqItems.addEventListener('click', (e) => {
+    if (e.target.closest('.faq__title')) {
+        e.target.closest('.faq__item')
+            .querySelector('.faq__text')
+            .classList.toggle('faq__text_active')
+        e.target.closest('.faq__item')
+            .querySelector('.faq__plus')
+            .classList.toggle('faq__plus_active')
+    }
+})
+
+burger.addEventListener('click', () => {
+    mobMenu.classList.add('header-mob_active')
+    document.body.style.overflowY = 'hidden'
+    document.querySelector('.html').style.overflowY = 'hidden'
+})
+
+burgerClose.addEventListener('click', removeMobMenu)
+
+mobMenuLinks.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (e.target.closest('.header-nav__list_mob .header-nav__link')) {
+        removeMobMenu()
+    }
+})
 
 
 movieToSection('header-nav__list')
