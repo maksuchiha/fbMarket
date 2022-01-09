@@ -5,7 +5,9 @@ const burger = document.querySelector('.header-burger')
 const burgerClose = document.querySelector('.header-burger_close')
 const mobMenu = document.querySelector('.header-mob')
 const mobMenuLinks = document.querySelector('.header-nav__list_mob')
-
+const marketplaceCounts = document.querySelectorAll('.marketplace-stat__count')
+const worksVideo = $('.h-works-info__slide video')
+const worksItem = $('.h-works-info__head')
 
 faqItems.addEventListener('click', (e) => {
     if (e.target.closest('.faq__title')) {
@@ -41,16 +43,15 @@ $(document).ready(function(){
     if (window.screen.width > 606) {
         $('.supported-brands__wr').slick({
             slidesToShow: 7,
-            slidesToScroll: 2,
-            speed: 8000,
+            slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 0,
+            autoplaySpeed: 1000,
             cssEase: 'linear',
+            draggable: true,
+            pauseOnHover: true,
+            pauseOnDotsHover: true,
         });
     }
-
-    const worksVideo = $('.h-works-info__slide video');
-    const worksItem = $('.h-works-info__head');
 
     $('.h-works-info__list').click((event) => {
         const target = event.target;
@@ -82,6 +83,55 @@ $(document).ready(function(){
     initVideo();
 });
 
+const animates = () => {
+    let isFalse = true
+
+    const animate = ({timing, draw, duration}) => {
+
+        let start = performance.now()
+
+
+        requestAnimationFrame(function animate(time) {
+            let timeFraction = (time - start) / duration
+            if (timeFraction > 1) timeFraction = 1
+
+            let progress = timing(timeFraction)
+
+            draw(progress)
+
+            if (timeFraction < 1) {
+                requestAnimationFrame(animate)
+            }
+
+        });
+    }
+
+    const animateNums = () => {
+        marketplaceCounts.forEach((item, index) => {
+            animate({
+                duration: 1000,
+                timing(timeFraction) {
+                    return timeFraction;
+                },
+                draw(progress) {
+                    if (index === 0) {
+                        item.textContent = `${Math.ceil(progress * 3229250)}+`
+                    } else if (index === 1) {
+                        item.textContent = `${Math.ceil(progress * 259700)}+`
+                    } else if (index === 2) {
+                        item.textContent = `${Math.ceil(progress * 10235)}`
+                    }
+                }
+            })
+        })
+        isFalse = false
+    }
+    window.addEventListener('scroll', () => {
+        if (window.scrollY >= 2734 && isFalse === true) {
+            animateNums()
+        }
+    })
+}
 
 const movieToSection = (element) => {
     const menuLinks = document.querySelector(`.${element}`)
@@ -104,5 +154,7 @@ const movieToSection = (element) => {
     })
 }
 
+
 movieToSection('header-nav__list')
 movieToSection('header-nav__list_mob')
+animates()
