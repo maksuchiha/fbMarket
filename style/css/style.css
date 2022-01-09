@@ -30,13 +30,13 @@
 
 html {
   height: 100%;
-  min-width: 380px;
+  min-width: 320px;
 }
 
 body {
   height: 100%;
   font-family: Circe, sans-serif;
-  min-width: 380px;
+  min-width: 320px;
 }
 
 .container {
@@ -667,7 +667,7 @@ ul {
 }
 @media (max-width: 798px) {
   .title {
-    margin-bottom: 35px;
+    margin-bottom: 45px;
     font-size: 40px;
   }
   .title_bg span:last-of-type {
@@ -730,6 +730,9 @@ ul {
   .supported-brands__wr {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .supported-brands__wr img {
+    width: calc(50% - 5px);
   }
   .supported-brands__wr img:not(:last-of-type) {
     margin-right: 5px;
@@ -989,6 +992,7 @@ ul {
   padding: 40px 32px;
   margin: 24px;
   text-align: center;
+  border-radius: 10px;
 }
 .feedback-item_pink {
   background: url("./../../img/feedback/bg-p.png") center/cover no-repeat;
@@ -1032,8 +1036,11 @@ ul {
   }
   .feedback-item {
     padding: 40px 25px;
-    margin: 10px;
     flex: 0 0 305px;
+    margin: 0;
+  }
+  .feedback-item:not(:last-of-type) {
+    margin-right: 10px;
   }
 }
 @media (max-width: 798px) {
@@ -1045,6 +1052,11 @@ ul {
   .feedback {
     transform: translateY(-65px);
     padding: 0;
+  }
+  .feedback-item {
+    width: 290px;
+    flex: 0 0 290px;
+    min-height: 280px;
   }
 }
 .faq {
