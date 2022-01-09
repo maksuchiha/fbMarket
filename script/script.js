@@ -22,12 +22,14 @@ faqItems.addEventListener('click', (e) => {
 
 const removeMobMenu = () => {
     mobMenu.classList.remove('header-mob_active')
-    document.body.style.overflow = 'auto'
+    document.body.style.overflowY = 'auto'
+    document.querySelector('.html').style.overflowY = 'auto'
 }
 
 burger.addEventListener('click', () => {
     mobMenu.classList.add('header-mob_active')
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflowY = 'hidden'
+    document.querySelector('.html').style.overflowY = 'hidden'
 })
 
 burgerClose.addEventListener('click', removeMobMenu)
