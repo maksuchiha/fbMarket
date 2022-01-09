@@ -36,7 +36,7 @@ $(document).ready(function(){
 
             worksItem.each((index, item) => {
 
-                if(item == target.closest('.h-works-info__head')) {
+                if(item === target.closest('.h-works-info__head')) {
                     currentSlide = index;
                     indexClick = index;
                     srcVideo = $(item).data('src-video');
