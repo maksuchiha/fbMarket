@@ -250,7 +250,7 @@ ul {
   .header-mob .header-nav {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    margin: 80px 0;
     padding: 0;
   }
   .header-mob .header-nav__list {
@@ -264,6 +264,9 @@ ul {
     font-size: 26px;
     line-height: 120%;
     color: #1F2631;
+  }
+  .header-mob__buttons {
+    padding-bottom: 60px;
   }
   .header-mob .header__button {
     display: flex;
@@ -1344,5 +1347,3 @@ ul {
     padding: 20px 0 40px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
