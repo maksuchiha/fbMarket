@@ -10,6 +10,7 @@ const worksVideo = $('.h-works-info__slide video')
 const worksItem = $('.h-works-info__head')
 let currentSlide = 0
 
+
 faqItems.addEventListener('click', (e) => {
     if (e.target.closest('.faq__title')) {
         e.target.closest('.faq__item')
@@ -70,10 +71,6 @@ $(document).ready(function(){
             infoList[currentSlide].classList.toggle('active')
             worksVideo.attr('src', `${infoList[currentSlide].getAttribute('data-src-video')}`);
         });
-
-
-
-
     }
     nextSlide()
 
