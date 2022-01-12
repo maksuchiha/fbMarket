@@ -1347,3 +1347,16 @@ ul {
     padding: 20px 0 40px;
   }
 }
+@media (max-width: 606px) {
+  .footer-nav__list {
+    flex-direction: column;
+  }
+  .footer-nav__list li:not(:last-of-type) {
+    margin: 0 0 5px 0;
+  }
+  .footer-nav__link {
+    font-size: 14px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
