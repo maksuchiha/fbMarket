@@ -158,6 +158,9 @@ ul {
 .header {
   padding: 32px 0 69px;
 }
+.header_pb {
+  padding-bottom: 32px;
+}
 .header__inner {
   display: flex;
   justify-content: space-between;
@@ -1337,6 +1340,7 @@ ul {
   text-align: center;
   color: #C9D1D9;
   transition: all 0.3s;
+  text-transform: uppercase;
 }
 .footer-nav__link:hover {
   color: #1B74E4;
@@ -1358,3 +1362,9 @@ ul {
     font-size: 14px;
   }
 }
+.privacy {
+  padding: 0 0 32px 0;
+  color: rgba(76, 79, 82, 0.8);
+}
+
+/*# sourceMappingURL=style.css.map */
