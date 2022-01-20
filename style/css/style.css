@@ -128,6 +128,12 @@ ul {
   list-style: none;
 }
 
+.overflow {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
 .head-bg {
   background: #f6f9fd;
   border-radius: 0 0 150px 150px;
@@ -181,7 +187,7 @@ ul {
   margin: 0 25px;
 }
 .header-nav__link {
-  color: #C9D1D9;
+  color: #b1b5b9;
   line-height: 19px;
   transition: all 0.3s;
 }
@@ -1343,7 +1349,7 @@ ul {
   font-weight: bold;
   line-height: 120%;
   text-align: center;
-  color: #C9D1D9;
+  color: #b1b5b9;
   transition: all 0.3s;
   text-transform: uppercase;
 }
@@ -1371,5 +1377,3 @@ ul {
   padding: 140px 0 32px 0;
   color: rgba(76, 79, 82, 0.8);
 }
-
-/*# sourceMappingURL=style.css.map */

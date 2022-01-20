@@ -78,8 +78,8 @@ $(document).ready(function(){
 
 const removeMobMenu = () => {
     mobMenu.classList.remove('header-mob_active')
-    document.body.style.overflowY = 'auto'
-    document.querySelector('.html').style.overflowY = 'auto'
+    document.body.classList.remove('overflow')
+    document.querySelector('.html').classList.remove('overflow')
 }
 
 const animates = () => {
@@ -165,8 +165,8 @@ faqItems.addEventListener('click', (e) => {
 
 burger.addEventListener('click', () => {
     mobMenu.classList.add('header-mob_active')
-    document.body.style.overflowY = 'hidden'
-    document.querySelector('.html').style.overflowY = 'hidden'
+    document.body.classList.add('overflow')
+    document.querySelector('.html').classList.add('overflow')
 })
 
 burgerClose.addEventListener('click', removeMobMenu)
